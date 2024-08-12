@@ -8,8 +8,8 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] float speed; 
 
     void Start()
-    {      
-        
+    {
+        Debug.Log("Character's current position: " + transform.position); // To find the position of an object 
     }     
     void Update() 
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class VariableExample : MonoBehaviour
 {
     // 1. Define an integer variable and assign a value to it
-    int myInt = 42;
+    int myInt = 21;
 
     // 2. Define a decimal variable and assign a value to it
     float myDecimal = 3.14f;
