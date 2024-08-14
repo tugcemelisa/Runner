@@ -1,7 +1,7 @@
 using UnityEngine;
 public class HomeWork3 : MonoBehaviour
 {
-    [SerializeField] int hw; // [SerializeField] : inspector’da verileri görmemizi saðlayan tür.
+    [SerializeField] int hw;
     void Start()
     {
         if(hw < 5)
