@@ -25,3 +25,4 @@ public class VariableExample : MonoBehaviour
         Debug.Log(myInt);
     }
 }
+
