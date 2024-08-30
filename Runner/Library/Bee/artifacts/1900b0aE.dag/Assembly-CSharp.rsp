@@ -354,9 +354,13 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/2022.3.29f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/CharacterCs.cs"
 "Assets/Scripts/CharacterScript.cs"
+"Assets/Scripts/For.cs"
+"Assets/Scripts/GameManager.cs"
+"Assets/Scripts/GameManager2.cs"
 "Assets/Scripts/HomeWork3.cs"
 "Assets/Scripts/M1L2Homework.cs"
 "Assets/Scripts/Mission.cs"
+"Assets/Scripts/Spiski.cs"
 -langversion:9.0
 /deterministic
 /optimize+
