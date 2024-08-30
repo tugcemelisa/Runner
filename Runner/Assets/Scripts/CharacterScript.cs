@@ -8,12 +8,10 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float shift;  
     [SerializeField] float jumpForce;  
-    [SerializeField] Animator anim;   
-   
+    [SerializeField] Animator anim;      
 
     void Start()
-    {      
-        
+    {              
     }     
     void Update() 
     {                   
@@ -25,7 +23,6 @@ public class CharacterScript : MonoBehaviour
         {
             transform.Translate(shift, 0, 0);
         }
-
 
         if(Input.GetKeyDown(KeyCode.Space) && rb.velocity.y == 0)
         {
@@ -39,13 +36,10 @@ public class CharacterScript : MonoBehaviour
         if(rb.velocity.y == 0)
         {
             anim.SetBool("jump", false); 
-        }
-       
-        
+        }        
     }
     void FixedUpdate()
     {
        rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime);       
-    }
-   
+    }   
 }
