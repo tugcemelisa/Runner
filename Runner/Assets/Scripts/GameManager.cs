@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] List<GameObject> locations = new List<GameObject>(); 
+    [SerializeField] List<GameObject> locations = new List<GameObject>();
     [SerializeField] Transform player;
     float levelLength = 106f;
-    int count = 4;   
+    int count = 4;
 
     void Start()
     {
-       Instantiate(locations[0], transform.forward, transform.rotation);
-       for(int i = 0; i < count; i++)
-       {
+        Instantiate(locations[0], transform.forward, transform.rotation);
+        for (int i = 0; i < count; i++)
+        {
             CreateLocation();
-       }
+        }
     }
 
     void CreateLocation()
@@ -26,9 +26,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(player.position.z > levelLength - 106f * count)
+        if (player.position.z > levelLength - 106f * count)
         {
             CreateLocation();
         }
-    }  
+    }
 }
