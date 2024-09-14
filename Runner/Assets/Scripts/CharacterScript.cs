@@ -12,12 +12,12 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] Animator anim; 
     [SerializeField] TMP_Text score;  
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject shield;
     float roundScore;
     bool isGameOver;   
-
+    bool isShield;
     void Start()
     {         
-             
     }     
     void Update() 
     {       
@@ -57,13 +57,40 @@ public class CharacterScript : MonoBehaviour
             rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime);       
         }
     }   
+    void DeactivateShield()
+    {
+        isShield = false;        
+    }
+    
     private void OnCollisionEnter(Collision other) 
     {
         if(other.gameObject.CompareTag("Obstacle"))
         {
-            isGameOver = true;            
-            menu.SetActive(true);
-            anim.SetBool("death", true);
+            if(isShield)
+            {
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                isGameOver = true;            
+                menu.SetActive(true);
+                anim.SetBool("death", true);
+            }            
+        }        
+    }
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Money"))
+        {
+            roundScore += 5;
+            score.text = "Score: " + roundScore.ToString("f1");   
+            Destroy(other.gameObject);
+        }
+        if(other.CompareTag("Shield"))
+        {
+            isShield = true;
+            Invoke("DeactivateShield", 5f);
+            Destroy(other.gameObject);
         }
     }
 }
