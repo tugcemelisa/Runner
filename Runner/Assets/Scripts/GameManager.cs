@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         if(player.position.z > levelLength - 106.3f * count)
         {
             CreateLocation();
+            Time.timeScale += 0.1f;
         }
     }  
 }

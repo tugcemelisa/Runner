@@ -13,6 +13,9 @@ public class CharacterScript : MonoBehaviour
     [SerializeField] TMP_Text score;  
     [SerializeField] GameObject menu;
     [SerializeField] GameObject shield;
+    [SerializeField] GameObject itemVFX, shieldVFX, obstacleVFX;
+    [SerializeField] AudioClip itemSFX, shieldSFX, obstacleSFX, destroySFX;
+    [SerializeField] AudioSource sound, music;
     float roundScore;
     bool isGameOver;   
     bool isShield;
@@ -69,12 +72,19 @@ public class CharacterScript : MonoBehaviour
             if(isShield)
             {
                 Destroy(other.gameObject);
+                sound.clip = destroySFX;
+                sound.Play();
             }
             else
             {
                 isGameOver = true;            
                 menu.SetActive(true);
                 anim.SetBool("death", true);
+                GameObject vfx = Instantiate(obstacleVFX, transform.position, transform.rotation);
+                sound.clip = obstacleSFX;
+                sound.Play();
+                music.Stop();
+                Destroy(vfx, 3f); 
             }            
         }        
     }
@@ -83,13 +93,22 @@ public class CharacterScript : MonoBehaviour
         if(other.CompareTag("Money"))
         {
             roundScore += 5;
-            score.text = "Score: " + roundScore.ToString("f1");   
+            score.text = "Score: " + roundScore.ToString("f1"); 
+            GameObject vfx = Instantiate(itemVFX, other.transform.position, other.transform.rotation);
+            Destroy(vfx, 3f); 
+            sound.clip = itemSFX;
+            sound.Play(); 
             Destroy(other.gameObject);
         }
         if(other.CompareTag("Shield"))
         {
             isShield = true;
             Invoke("DeactivateShield", 5f);
+            GameObject vfx = Instantiate(shieldVFX, transform.position + transform.up, other.transform.rotation);
+            vfx.transform.SetParent(this.transform);
+            sound.clip = shieldSFX;
+            Destroy(vfx, 5f);
+            sound.Play();               
             Destroy(other.gameObject);
         }
     }
